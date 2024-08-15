@@ -1,0 +1,14 @@
+#aboutContainer {
+    margin-inline: 15vw;
+}
+
+#aboutHeader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+}
+
+.aboutSpacer {
+    margin-block: 2vh;
+}

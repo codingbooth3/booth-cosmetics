@@ -1,0 +1,14 @@
+#conditionsContainer {
+    margin-inline: 15vw;
+}
+
+#conditionsHeader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+}
+
+.conditionSpacer {
+    margin-block: 2vh;
+}

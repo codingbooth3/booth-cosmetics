@@ -1,0 +1,54 @@
+#footerContainer {
+    padding-block: 4vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(237, 202, 212);
+}
+
+#footerLogo {
+    height: 15vh;
+}
+
+#footerList {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    font-size: 15px;
+    width: 70vw;
+    margin-inline: 5vw;
+}
+
+.footerLink {
+    color: black;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+#copyContainer {
+    margin-top: 2vh;
+    width: 80vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#madeText, #copy {
+    margin-top: 1vh;
+    margin-bottom: 0;
+    padding: 0;
+}
+
+#myLink {
+    color: black;
+    text-decoration: none;
+}
+
+#pictureCredit {
+    cursor: pointer;
+    text-decoration: none;
+}
