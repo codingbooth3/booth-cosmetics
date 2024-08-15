@@ -1,1 +1,0 @@
-import{j as e}from"./index-C85Fm_d-.js";function i(){return e.jsxs("div",{id:"pictureContainer",children:[e.jsx("h3",{id:"pictureHeader",children:"Picture Credit"}),e.jsxs("h4",{id:"pictureSubHeader",children:["I do not own any of these pictures. They are all owned by ",e.jsx("a",{href:"https://www.freepik.com/",children:"Freepik"})]})]})}export{i as default};
