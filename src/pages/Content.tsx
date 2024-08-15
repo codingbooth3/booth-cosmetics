@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 
+
 import '../../src/css/Content.css';
 
 import Header from './Header';
