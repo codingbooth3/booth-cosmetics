@@ -21,6 +21,9 @@ const Privacy = lazy(() => import('./Privacy'));
 const Conditions = lazy(() => import('./Conditions'));
 const Myself = lazy(() => import('./Myself'));
 const Cart = lazy(() => import('./Cart'));
+const Create = lazy(() => import('./Create'))
+
+
 export default function Content() {
   return (
     <div>
@@ -42,6 +45,7 @@ export default function Content() {
             <Route path='/booth-cosmetics/pictures/credit/' element={<Picture />} />
             <Route path='/booth-cosmetics/cart/' element={<Cart />} />
             <Route path='/booth-cosmetics/myself' element={<Myself />} />
+            <Route path='/booth-cosmetics/create/' element={<Create />} />
             <Route path='*' element={<NotFound />} />
           </Routes>
         </Suspense>

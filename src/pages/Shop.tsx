@@ -6,9 +6,8 @@ import toast from 'react-hot-toast';
 import { auth } from '../config/firebase';
 import { User } from 'firebase/auth';
 
-import foundation from '../../src/imgs/foundation.jpg';
-import lipbalm from '../../src/imgs/lipbalm.jpg';
-import palette from '../../src/imgs/palette.jpg';
+import { collection, getDocs, DocumentData, QuerySnapshot } from 'firebase/firestore';
+import { database } from '../config/firebase';
 
 export default function Shop() {
   const [user, setUser] = useState<User | null>(auth.currentUser);
@@ -27,31 +26,41 @@ export default function Shop() {
     natural: localStorage.getItem('natural') === 'checked',
   });
 
-  interface ShopItemsProps {
+  interface Products {
     image: string;
     title: string;
-    price: string;
+    price: number;
+    description: string;
     collection: string[];
     productId: number;
-    listingCreator: string;
+    user: string;
   }
 
-  const products: ShopItemsProps[] = [
-    { image: palette, title: 'Eye Palette', price: '$20.00', collection: ['new', 'eyes', 'best'], productId: 1 , listingCreator: 'codingbooth3@proton.me'},
-    { image: lipbalm, title: 'Lip Balm', price: '$5.00', collection: ['new', 'sale', 'lips'], productId: 2, listingCreator: 'codingbooth3@proton.me' },
-    { image: foundation, title: 'Foundation', price: '$15.00', collection: ['new', 'natural', 'face'], productId: 3, listingCreator: 'codingbooth3@proton.me' },
-  ];
+  const [products, setProducts] = useState<Products[]>([]);
 
-  const ShopItem: React.FC<ShopItemsProps> = ({ image, title, price, productId, listingCreator }) => (
+  useEffect(() => {
+    const fetchListings = async () => {
+      const querySnapshot: QuerySnapshot<DocumentData> = await getDocs(collection(database, "products"));
+      const listingsData: Products[] = querySnapshot.docs.map(doc => ({ 
+        ...doc.data() as Products, 
+        id: doc.id 
+      }));
+      setProducts(listingsData);
+    };
+
+    fetchListings();
+  }, []);
+
+  const ShopItem: React.FC<Products> = ({  description, image, price, title, user, productId }) => (
     <li className="shopItemContainer">
       <div className="shopImageCreditContainer">
         <img src={image} alt={title} className='shopItemImage' loading="lazy" />
-        <h5 className="imageProvided">Image Provided By: <a href="https://www.freepik.com/">Freepik</a></h5>
       </div>
       <h3 className="shopTitle">{title}</h3>
       <h4 className="shopPrice">{price}</h4>
       <h4 className="shopId">{productId}</h4>
-      <h4 className="creatorEmail">{listingCreator}</h4>
+      <h3 className="shopDescription">{description}</h3>
+      <h4 className="creatorEmail">{user}</h4>
       <div id="shopAddToCartButtonContainer">
         <button id='shopAddToCartButton'>ADD TO CART</button>
       </div>
@@ -303,10 +312,11 @@ export default function Shop() {
                 key={product.title} 
                 image={product.image} 
                 title={product.title} 
-                price={product.price} 
+                price={product.price}
+                description={product.description} 
                 collection={product.collection}
                 productId={product.productId}
-                listingCreator={product.listingCreator}
+                user={product.user}
               />
             ))}
           </ul>

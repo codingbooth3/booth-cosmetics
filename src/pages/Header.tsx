@@ -181,11 +181,14 @@ export default function Header() {
             </Link>
             <Link to={'booth-cosmetics/cart/'}>
               <img src={cart} alt="Cart" id='cart' />
+              <div id="totalCartCounter">
+
+              </div>
             </Link>
           </div>
-          <button id="createListing">
+          <Link to={'/booth-cosmetics/create/'} id="createListing">
             Create a listing
-          </button>
+          </Link>
         </div>
       </div>
     </div>
